@@ -1,0 +1,32 @@
+{
+  "name": "dumplingswap-contracts",
+  "version": "1.0.0",
+  "license": "MIT",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^3.1.0",
+    "@openzeppelin/contracts-upgradeable": "^3.4.0",
+    "@openzeppelin/test-helpers": "^0.5.10",
+    "@openzeppelin/truffle-upgrades": "^1.5.0",
+    "@truffle/hdwallet-provider": "^1.2.4",
+    "truffle-contract-size": "^2.0.1",
+    "truffle-plugin-verify": "^0.5.7",
+    "web3": "^1.3.0"
+  },
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.2.4",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "dotenv": "^8.2.0",
+    "truffle-privatekey-provider": "^1.5.0"
+  },
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "description": ""
+}
