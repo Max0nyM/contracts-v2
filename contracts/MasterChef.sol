@@ -62,7 +62,7 @@ contract MasterChef is Ownable, ReentrancyGuard {
 	// Dumpler Mini Address;
 	address public dumplerMiniAddress;
 	// Is dumplers fee enabled;
-	bool public isDumplerFeeEnabled = true;
+	bool public isDumplerFeeEnabled = false;
 	// Deposit Fee address
 	address public feeAddress;
 	// DUMP tokens created per block.
@@ -394,5 +394,9 @@ contract MasterChef is Ownable, ReentrancyGuard {
 	function setStartBlock(uint256 _startBlock) external {
 		require(block.number < startBlock, "It's too late to postpone mining. It has already started");
 		startBlock = _startBlock;
+	}
+
+	function setIsDumplerFeeEnabled(bool _isDumplerFeeEnabled) external onlyOwner {
+		isDumplerFeeEnabled = _isDumplerFeeEnabled;
 	}
 }

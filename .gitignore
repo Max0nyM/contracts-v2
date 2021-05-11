@@ -9,4 +9,5 @@
 /truffle-config.js
 .env
 contracts.txt
+contracts-testnet.txt
 .env
