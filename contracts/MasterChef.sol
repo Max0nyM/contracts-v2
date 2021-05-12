@@ -51,7 +51,7 @@ contract MasterChef is Ownable, ReentrancyGuard {
 		uint256 harvestInterval; // Harvest interval in seconds
 	}
 
-	// The DUMP TOKEN!
+	// The SDUMP TOKEN!
 	SpaceDumplingToken public dumpling;
 	// Dev address.
 	address public devAddress;
