@@ -35,6 +35,8 @@ contract SpaceDumplingToken is BEP20 {
 	bool private _inSwapAndLiquify;
 	// Liquidity divider to calcualte antiWhale fee (20% initially)
 	uint256 public liquidityDivider = 5;
+	// Liquidity address, if not set it will be operator, timelock after start
+	address public liquidityAddress = 0x000000000000000000000000000000000000dEaD;
 
 	// The operator can only update the transfer tax rate
 	address private _operator;
@@ -194,14 +196,17 @@ contract SpaceDumplingToken is BEP20 {
 	function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
 		// approve token transfer to cover all possible scenarios
 		_approve(address(this), address(dumplingSwapRouter), tokenAmount);
-
+		address liquidityAddressTarget = operator();
+		if (liquidityAddress != BURN_ADDRESS) {
+			liquidityAddressTarget = liquidityAddress;
+		}
 		// add the liquidity
 		dumplingSwapRouter.addLiquidityETH{value: ethAmount}(
 			address(this),
 			tokenAmount,
 			0, // slippage is unavoidable
 			0, // slippage is unavoidable
-			operator(),
+			liquidityAddressTarget,
 			block.timestamp
 		);
 	}
@@ -281,6 +286,10 @@ contract SpaceDumplingToken is BEP20 {
 
 	function updateLiquidityDivider(uint256 _liquidityDivider) public onlyOperator {
 		liquidityDivider = _liquidityDivider;
+	}
+
+	function setLiquidityAddress(address _liquidityAddress) public onlyOperator {
+		liquidityAddress = _liquidityAddress;
 	}
 
 	/**

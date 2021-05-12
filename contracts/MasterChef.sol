@@ -210,9 +210,9 @@ contract MasterChef is Ownable, ReentrancyGuard {
 		uint256 dumplingReward = multiplier.mul(dumplingPerBlock).mul(pool.allocPoint).div(totalAllocPoint);
 		if (isDumplerFeeEnabled) {
 			uint256 totalFee = dumplingReward.div(10);
-			uint256 dumplerFee = totalFee.div(5); //2% of the total dev fee
-			uint256 dumplerMiniFee = totalFee.div(5); //1% of the total dev fee
-			uint256 devFee = totalFee.sub(dumplerFee).sub(dumplerMiniFee); //remaining 7% to the dev address
+			uint256 dumplerFee = totalFee.div(10); //1% of the total dev fee
+			uint256 dumplerMiniFee = totalFee.div(20); //0.5% of the total dev fee
+			uint256 devFee = totalFee.sub(dumplerFee).sub(dumplerMiniFee); //remaining 8.5% to the dev address
 			dumpling.mint(dumplerAddress, dumplerFee);
 			dumpling.mint(dumplerMiniAddress, dumplerMiniFee);
 			dumpling.mint(devAddress, devFee);
